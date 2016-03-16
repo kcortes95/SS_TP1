@@ -18,7 +18,7 @@ public class Filtering {
 		map = new HashMap<>();
 	}
 	
-	public void order(Set<Particle> particles){
+	public void sort(Set<Particle> particles){
 		int cuadroX, cuadroY, cell ;
 		Set<Particle> set ;
 		for(Particle p : particles){
@@ -39,6 +39,18 @@ public class Filtering {
 	
 	public Map<Integer, Set<Particle>> getMap() {
 		return map;
+	}
+	
+	public void search(){
+		Set<Particle> set;
+		for(int i=1;i<=Math.pow(totCells, 2);i++){
+			if(map.containsKey(i)){
+				set = map.get(i);
+				System.out.println("CELDA: " + i + " - TOTAL: " + set.size());
+				
+				
+			}
+		}
 	}
 	
 	
