@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Filtering {
 	
@@ -46,7 +43,30 @@ public class Filtering {
 		for(int i=1;i<=Math.pow(totCells, 2);i++){
 			if(map.containsKey(i)){
 				set = map.get(i);
-				System.out.println("CELDA: " + i + " - TOTAL: " + set.size());
+				System.out.println("CELDA: " + i + " - TOTAL PARTICULAS: " + set.size());				
+				
+				//DESDE ACA HASTA DONDE ESTA MARCADO TIENE QUE ESTAR EN OTRO LADO
+				List<Integer> vecinas = new ArrayList<>();
+
+				if((i-totCells)>=1 && (i-totCells)<=25)
+					vecinas.add(i-totCells);
+				
+				if((i-totCells+1)>=1 && (i-totCells+1)<=25)
+					vecinas.add(i-totCells+1);
+				
+				if((i+1)>=1 && (i+1)<=25)
+					vecinas.add(i+1);
+				
+				if((i+totCells)>=1 && (i+totCells)<=25)
+					vecinas.add(i+totCells);
+
+				System.out.println("VECINAS: " + vecinas.toString());
+				//HASTA ACA DEBERIA SER OTRO METODO
+				
+				for(Integer vec : vecinas){
+					map.get(vec);
+					
+				}
 				
 				
 			}
