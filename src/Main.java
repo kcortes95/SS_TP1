@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Particle p1 = new Particle(3.5, 5.7, 0, 2);
-		Particle p2 = new Particle(3.5, 5.6, 0, 2);
+		Particle p2 = new Particle(3.5, 5.5, 0, 2);
 		Particle p3 = new Particle(3.5, 7, 0, 2);
 		Particle p4 = new Particle(1.7, 3.3, 0, 2);
 		Particle p5 = new Particle(5, 7, 0, 2);
@@ -25,7 +25,7 @@ public class Main {
 		myParticles.add(p7);
 		myParticles.add(p8);
 		
-		Filtering f = new Filtering(8, 5, 1); // L M Rc
+		Filtering f = new Filtering(8, 5, 2); // L M Rc
 		
 		f.sort(myParticles);
 		f.searchNeighbours();

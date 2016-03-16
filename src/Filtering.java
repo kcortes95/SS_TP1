@@ -47,13 +47,24 @@ public class Filtering {
 		for(int i=1;i<=Math.pow(totCells, 2);i++){
 			if(map.containsKey(i)){
 				set = map.get(i);
-				System.out.println("CELDA: " + i + " - TOTAL PARTICULAS: " + set.size());				
+				System.out.println("CELDA: " + i + " - TOTAL PARTICULAS: " + set.size());
+				
+				
 				
 				List<Integer> vecinas = getNeighbouringCells(i);
 				
 				for(Integer neighbourCell : vecinas){
 					Set<Particle> neighbourPart = map.get(neighbourCell);
 					for(Particle p1: set){
+						// Checks first for other particles in its same cell
+						for(Particle paux: set){
+							if(!p1.equals(paux)){
+								if(getDistance(p1,paux)<=Rc){
+									addToCondition(p1,paux);
+								}
+							}
+						}
+						// Then checks for particles in adjacent cells
 						if(neighbourPart != null){
 							for(Particle p2: neighbourPart){
 								if(getDistance(p1,p2)<=Rc){
@@ -94,7 +105,7 @@ public class Filtering {
 		
 		if((currentCell+totCells+1)>=1 && (currentCell+totCells+1)<=25)
 			vecinas.add(currentCell+totCells+1);
-		System.out.println("VECINAS: " + vecinas.toString());
+		
 		return vecinas;
 	}
 	
