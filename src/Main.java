@@ -13,7 +13,7 @@ public class Main {
 		Particle p6 = new Particle(1, 5, 3.3, 2, 2);
 		Particle p7 = new Particle(1, 5, 5, 2, 2);
 		Particle p8 = new Particle(1, 1.7, 5, 2, 2);
-		
+	
 		Set<Particle> myParticles = new HashSet<>();
 		
 		myParticles.add(p1);
@@ -29,7 +29,6 @@ public class Main {
 		
 		f.sort(myParticles);
 		
-		//System.out.println(f.getMap());
 		f.search();
 		
 	}
