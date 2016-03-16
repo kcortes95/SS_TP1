@@ -5,13 +5,17 @@ public class Filtering {
 	// private int totPart = 0; //N -> creo que no lo voy a usar en este momento porque el N me lo da el Set<Particulas>
 	private double longitud = 0 ; //L
 	private int totCells = 0; //M -> Matrix of M*M
+	private int Rc = 0;
+	private Map<Particle,Set<Particle>> condition = new HashMap<>();
+	
 	
 	private Map<Integer,Set<Particle>> map = null;
 	
-	public Filtering( double L, int M) {
+	public Filtering( double L, int M, int Rc) {
 		//this.totPart = N;
 		this.longitud = L;
 		this.totCells = M;
+		this.Rc = Rc;
 		map = new HashMap<>();
 	}
 	
@@ -38,41 +42,65 @@ public class Filtering {
 		return map;
 	}
 	
-	public void search(){
+	public void searchNeighbours(){
 		Set<Particle> set;
 		for(int i=1;i<=Math.pow(totCells, 2);i++){
 			if(map.containsKey(i)){
 				set = map.get(i);
 				System.out.println("CELDA: " + i + " - TOTAL PARTICULAS: " + set.size());				
 				
-				//DESDE ACA HASTA DONDE ESTA MARCADO TIENE QUE ESTAR EN OTRO LADO
-				List<Integer> vecinas = new ArrayList<>();
-
-				if((i-totCells)>=1 && (i-totCells)<=25)
-					vecinas.add(i-totCells);
+				List<Integer> vecinas = getNeighbouringCells(i);
 				
-				if((i-totCells+1)>=1 && (i-totCells+1)<=25)
-					vecinas.add(i-totCells+1);
-				
-				if((i+1)>=1 && (i+1)<=25)
-					vecinas.add(i+1);
-				
-				if((i+totCells)>=1 && (i+totCells)<=25)
-					vecinas.add(i+totCells);
-
-				System.out.println("VECINAS: " + vecinas.toString());
-				//HASTA ACA DEBERIA SER OTRO METODO
-				
-				for(Integer vec : vecinas){
-					map.get(vec);
-					
-				}
-				
-				
+				for(Integer neighbourCell : vecinas){
+					Set<Particle> neighbourPart = map.get(neighbourCell);
+					for(Particle p1: set){
+						if(neighbourPart != null){
+							for(Particle p2: neighbourPart){
+								if(getDistance(p1,p2)<=Rc){
+									addToCondition(p1,p2);
+									addToCondition(p2,p1);
+								}	
+							}
+						}
+					}	
+				}	
 			}
+		}
+		for(Map.Entry<Particle, Set<Particle>> entry: condition.entrySet()){
+			System.out.println("Particle " + entry.getKey().getID());
+			for(Particle p: entry.getValue()){
+				System.out.print(p.getID() + " - ");
+			}
+			System.out.println(" ");
 		}
 	}
 	
+	private void addToCondition(Particle p1, Particle p2){
+		if(!condition.containsKey(p1))
+			condition.put(p1, new HashSet<Particle>());
+		condition.get(p1).add(p2);
+	}
 	
-
+	private List<Integer> getNeighbouringCells(Integer currentCell){
+		List<Integer> vecinas = new ArrayList<Integer>();
+		if((currentCell-totCells)>=1 && (currentCell-totCells)<=25)
+			vecinas.add(currentCell-totCells);
+		
+		if((currentCell-totCells+1)>=1 && (currentCell-totCells+1)<=25)
+			vecinas.add(currentCell-totCells+1);
+		
+		if((currentCell+1)>=1 && (currentCell+1)<=25)
+			vecinas.add(currentCell+1);
+		
+		if((currentCell+totCells+1)>=1 && (currentCell+totCells+1)<=25)
+			vecinas.add(currentCell+totCells+1);
+		System.out.println("VECINAS: " + vecinas.toString());
+		return vecinas;
+	}
+	
+	public double getDistance(Particle p1, Particle p2){
+		return Math.sqrt(Math.pow(p1.getX()-p2.getX(), 2) + Math.pow(p1.getY()-p2.getY(), 2))-p1.getRadio()-p2.getRadio();
+	}
 }
+
+

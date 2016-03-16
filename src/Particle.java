@@ -1,18 +1,19 @@
 
 public class Particle {
 	
+	private static int counter = 1;
 	private int ID;
 	private double x;
 	private double y;
 	private double radio;
 	private double color;
 	
-	public Particle(int ID, double x, double y, double radio, double color) {
-		this.ID = ID;
+	public Particle(double x, double y, double radio, double color) {
 		this.x = x;
 		this.y = y;
 		this.radio = radio;
 		this.color = color;
+		this.ID = counter++;
 	}
 	
 	public double getX() {
@@ -29,6 +30,10 @@ public class Particle {
 	
 	public void setColor(double color) {
 		this.color = color;
+	}
+	
+	public int getID(){
+		return this.ID;
 	}
 	
 	@Override
