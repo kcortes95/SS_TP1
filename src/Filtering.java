@@ -77,13 +77,14 @@ public class Filtering {
 				}	
 			}
 		}
-		for(Map.Entry<Particle, Set<Particle>> entry: condition.entrySet()){
+		Output.getInstace().write(condition);
+		/*for(Map.Entry<Particle, Set<Particle>> entry: condition.entrySet()){
 			System.out.println("Particle " + entry.getKey().getID());
 			for(Particle p: entry.getValue()){
 				System.out.print(p.getID() + " - ");
 			}
 			System.out.println(" ");
-		}
+		}*/
 	}
 	
 	private void addToCondition(Particle p1, Particle p2){

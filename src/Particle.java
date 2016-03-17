@@ -46,6 +46,9 @@ public class Particle {
 		}
 	}
 	
+	public String toString(){
+		return "" + ID;
+	}
 	
 
 }
