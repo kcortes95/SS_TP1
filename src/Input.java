@@ -9,7 +9,6 @@ public class Input {
 	private static List<Particle> myParticles = null;
 	private static int N = 0;
 	private static int L = 0;
-	private static
 	
 	public static List<Particle> createParticles(String pathStatic, String pathDinamic){
 		myParticles = new ArrayList<>();
@@ -28,7 +27,7 @@ public class Input {
 				myParticles.add(new Particle(inputFileStatic.nextDouble(), inputFileStatic.nextDouble()));
 			}
 			
-			double timeCounter = 0;
+			double time = 0;
 			double posX,posY,vX,vY = 0;
 			
 			while( inputFileDinamic.hasNext() ){
@@ -36,15 +35,19 @@ public class Input {
 				int counter = 0;
 				int particleNumber = 0;
 				
-				timeCounter = inputFileDinamic.nextDouble();
+				time = inputFileDinamic.nextDouble();
 				
-				posX = inputFileDinamic.nextDouble();
-				// inputFileDinamic.next(); //tengo que hacer esto o nextDouble ya me lo mueve???
-				posY = inputFileDinamic.nextDouble();
-				vX = inputFileDinamic.nextDouble();
-				vY = inputFileDinamic.nextDouble();				
+				while(counter<N){
+					posX = inputFileDinamic.nextDouble();
+					// inputFileDinamic.next(); //tengo que hacer esto o nextDouble ya me lo mueve???
+					posY = inputFileDinamic.nextDouble();
+					vX = inputFileDinamic.nextDouble();
+					vY = inputFileDinamic.nextDouble();				
+					myParticles.get(counter).addMovement(time, new Position(posX, posY));
+					counter++;
+				}
 				
-				
+				counter = 0;
 				
 			}
 						
