@@ -22,6 +22,9 @@ public class Filtering {
 		Set<Particle> set ;
 		for(Particle p : particles){
 			
+			/*
+			 * SOLUCIONAR ACA!!!
+			 */
 			cuadroX = (int) (Math.floor(p.getX()/(longitud/totCells)) + 1);
 			cuadroY = (int) (Math.floor(p.getY()/(longitud/totCells)) + 1);
 			

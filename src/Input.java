@@ -9,7 +9,8 @@ public class Input {
 	private static List<Particle> myParticles = null;
 	private static int N = 0;
 	private static int L = 0;
-
+	private static
+	
 	public static List<Particle> createParticles(String pathStatic, String pathDinamic){
 		myParticles = new ArrayList<>();
 		
@@ -19,12 +20,32 @@ public class Input {
 			N = inputFileStatic.nextInt();
 			L = inputFileStatic.nextInt();
 			
-			while( inputFileStatic.hasNextDouble() ){
-				Random r = new Random();
-				double randomX = L * r.nextDouble();
-				double randomY = L * r.nextDouble();
+			
+			/*
+			 * OJO por como se recorre... no se si esta bien!
+			 */
+			while( inputFileStatic.hasNextDouble() ){				
+				myParticles.add(new Particle(inputFileStatic.nextDouble(), inputFileStatic.nextDouble()));
+			}
+			
+			double timeCounter = 0;
+			double posX,posY,vX,vY = 0;
+			
+			while( inputFileDinamic.hasNext() ){
 				
-				myParticles.add(new Particle(randomX, randomY, inputFileStatic.nextDouble(), inputFileStatic.nextDouble()));
+				int counter = 0;
+				int particleNumber = 0;
+				
+				timeCounter = inputFileDinamic.nextDouble();
+				
+				posX = inputFileDinamic.nextDouble();
+				// inputFileDinamic.next(); //tengo que hacer esto o nextDouble ya me lo mueve???
+				posY = inputFileDinamic.nextDouble();
+				vX = inputFileDinamic.nextDouble();
+				vY = inputFileDinamic.nextDouble();				
+				
+				
+				
 			}
 						
 		} catch (FileNotFoundException e) {
