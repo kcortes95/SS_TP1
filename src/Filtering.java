@@ -2,12 +2,10 @@ import java.util.*;
 
 public class Filtering {
 	
-	// private int totPart = 0; //N -> creo que no lo voy a usar en este momento porque el N me lo da el Set<Particulas>
 	private double longitud = 0 ; //L
 	private int totCells = 0; //M -> Matrix of M*M
 	private int Rc = 0;
 	private Map<Particle,Set<Particle>> condition = new HashMap<>();
-	
 	
 	private Map<Integer,Set<Particle>> map = null;
 	
@@ -47,10 +45,7 @@ public class Filtering {
 		for(int i=1;i<=Math.pow(totCells, 2);i++){
 			if(map.containsKey(i)){
 				set = map.get(i);
-				System.out.println("CELDA: " + i + " - TOTAL PARTICULAS: " + set.size());
-				
-				
-				
+								
 				List<Integer> vecinas = getNeighbouringCells(i);
 				
 				for(Integer neighbourCell : vecinas){
@@ -64,6 +59,7 @@ public class Filtering {
 								}
 							}
 						}
+						
 						// Then checks for particles in adjacent cells
 						if(neighbourPart != null){
 							for(Particle p2: neighbourPart){
@@ -77,14 +73,8 @@ public class Filtering {
 				}	
 			}
 		}
+		
 		Output.getInstace().write(condition);
-		/*for(Map.Entry<Particle, Set<Particle>> entry: condition.entrySet()){
-			System.out.println("Particle " + entry.getKey().getID());
-			for(Particle p: entry.getValue()){
-				System.out.print(p.getID() + " - ");
-			}
-			System.out.println(" ");
-		}*/
 	}
 	
 	private void addToCondition(Particle p1, Particle p2){
