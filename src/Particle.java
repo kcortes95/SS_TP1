@@ -1,27 +1,22 @@
+import java.util.*;
 
 public class Particle {
 	
 	private static int counter = 1;
 	private int ID;
-	private double x;
-	private double y;
+	private Movement movements = null;
 	private double radio;
 	private double color;
 	
-	public Particle(double x, double y, double radio, double color) {
-		this.x = x;
-		this.y = y;
+	public Particle(Movement movements, double radio, double color) {
+		this.movements = movements;
 		this.radio = radio;
 		this.color = color;
 		this.ID = counter++;
 	}
 	
-	public double getX() {
-		return x;
-	}
-	
-	public double getY() {
-		return y;
+	public Position getPosition(double time){
+		return movements.getMovements().get(time);
 	}
 	
 	public double getRadio() {
@@ -50,5 +45,5 @@ public class Particle {
 		return "" + ID;
 	}
 	
-
+	
 }

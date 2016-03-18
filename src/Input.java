@@ -4,25 +4,27 @@ import java.util.*;
 
 public class Input {
 	
-	private static Scanner inputFile;
+	private static Scanner inputFileStatic = null;
+	private static Scanner inputFileDinamic = null;
 	private static List<Particle> myParticles = null;
 	private static int N = 0;
 	private static int L = 0;
 
-	public static List<Particle> staticMethod(String path){
+	public static List<Particle> createParticles(String pathStatic, String pathDinamic){
 		myParticles = new ArrayList<>();
 		
 		try {
-			inputFile = new Scanner(new File(path));
-			N = inputFile.nextInt();
-			L = inputFile.nextInt();
+			inputFileStatic = new Scanner(new File(pathStatic));
+			inputFileDinamic = new Scanner(new File(pathDinamic));
+			N = inputFileStatic.nextInt();
+			L = inputFileStatic.nextInt();
 			
-			while( inputFile.hasNextDouble() ){
+			while( inputFileStatic.hasNextDouble() ){
 				Random r = new Random();
 				double randomX = L * r.nextDouble();
 				double randomY = L * r.nextDouble();
 				
-				myParticles.add(new Particle(randomX, randomY, inputFile.nextDouble(), inputFile.nextDouble()));
+				myParticles.add(new Particle(randomX, randomY, inputFileStatic.nextDouble(), inputFileStatic.nextDouble()));
 			}
 						
 		} catch (FileNotFoundException e) {

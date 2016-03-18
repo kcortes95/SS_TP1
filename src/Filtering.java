@@ -21,8 +21,10 @@ public class Filtering {
 		int cuadroX, cuadroY, cell ;
 		Set<Particle> set ;
 		for(Particle p : particles){
+			
 			cuadroX = (int) (Math.floor(p.getX()/(longitud/totCells)) + 1);
 			cuadroY = (int) (Math.floor(p.getY()/(longitud/totCells)) + 1);
+			
 			cell = cuadroX + totCells*(cuadroY-1);
 			
 			if(!map.containsKey(cell)){
