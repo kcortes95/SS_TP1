@@ -3,31 +3,11 @@ import java.util.*;
 public class Main {
 
 	public static void main(String[] args) {
+		Set<Particle> particles = new HashSet<Particle>();
+		Input.readParticles("Dynamic100.txt", "Static100.txt", particles);
 		
-		Particle p1 = new Particle(3.5, 5.7, 0, 2);
-		Particle p2 = new Particle(3.5, 5.5, 0, 2);
-		Particle p3 = new Particle(3.5, 7, 0, 2);
-		Particle p4 = new Particle(1.7, 3.3, 0, 2);
-		Particle p5 = new Particle(5, 7, 0, 2);
-		Particle p6 = new Particle(5, 3.3, 0, 2);
-		Particle p7 = new Particle(5, 5, 0, 2);
-		Particle p8 = new Particle(1.7, 5, 0, 2);
+		Grid grid = new CircularGrid(Input.getL(),10,particles);
 		
-	
-		CircularGrid grid = new CircularGrid(10,1);
-		
-		grid.insertParticle(p1);
-		grid.insertParticle(p2);
-		grid.insertParticle(p3);
-		grid.insertParticle(p4);
-		grid.insertParticle(p5);
-		grid.insertParticle(p6);
-		grid.insertParticle(p7);
-		grid.insertParticle(p8);
-		
-		
+		Simulation s = new Simulation(grid, 0, 0, 8);
 	}
-	
-
-
 }

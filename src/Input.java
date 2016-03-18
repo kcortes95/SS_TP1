@@ -5,20 +5,11 @@ import java.io.IOException;
 import java.util.Set;
 
 public class Input {
-		
 	
 		private static int N = 0;
 		private static double L = 0;
-		private static Input instance = null;
 		
-		public static Input getInstance(){
-			if (instance == null){
-				instance = new Input();
-			}
-			return instance;
-		}
-		
-		public void readParticles(String dFileName, String sFileName, Set<Particle> particles){
+		public static void readParticles(String dFileName, String sFileName, Set<Particle> particles){
 			
 			File dFile = new File( dFileName );
 			FileReader dFr = null;
@@ -40,7 +31,7 @@ public class Input {
 				sFr = new FileReader(sFile);
 				sBr = new BufferedReader(sFr);
 				sLine = sBr.readLine();
-				N = Integer.parseInt(sLine);
+				N = Integer.parseInt(sLine); // ARREGLEN ESTO GILES
 				sLine= sBr.readLine();
 				L = Double.parseDouble(sLine);
 				
@@ -54,5 +45,13 @@ public class Input {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		
+		public static int getN(){
+			return N;
+		}
+		
+		public static double getL() {
+			return L;
 		}
 }

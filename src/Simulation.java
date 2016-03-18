@@ -61,6 +61,7 @@ public class Simulation {
 				}
 			}
 		}
+		Output.getInstace().write(condition);
 	}
 	
 	private void addToCondition(Particle p1, Particle p2){

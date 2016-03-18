@@ -1,8 +1,10 @@
+import java.util.Set;
+
 
 public class LinearGrid extends Grid{
 	
-	public LinearGrid(int L, int M){
-		super(L,M);
+	public LinearGrid(double L, int M,Set<Particle> particles){
+		super(L,M,particles);
 	}
 	
 	public void calculateNeighbours(){
