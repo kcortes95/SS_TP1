@@ -16,20 +16,13 @@ public class Input {
 			inputFile = new Scanner(new File(path));
 			N = inputFile.nextInt();
 			L = inputFile.nextInt();
-			/*
-			 * En este archivo deberia recibir 
-			 * N: nro total de particulas
-			 * L: longitud del area de simulacion
-			 * r1 c1
-			 * X e Y tendrian que ser numeros random ???
-			 */
 			
-			while( inputFile.hasNextInt() ){
+			while( inputFile.hasNextDouble() ){
 				Random r = new Random();
 				double randomX = L * r.nextDouble();
 				double randomY = L * r.nextDouble();
 				
-				myParticles.add(new Particle(randomX, randomY, inputFile.nextInt(), inputFile.nextInt()));
+				myParticles.add(new Particle(randomX, randomY, inputFile.nextDouble(), inputFile.nextDouble()));
 			}
 						
 		} catch (FileNotFoundException e) {
