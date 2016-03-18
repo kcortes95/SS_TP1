@@ -1,74 +1,58 @@
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Set;
 
 public class Input {
-	
-	private static Scanner inputFileStatic = null;
-	private static Scanner inputFileDinamic = null;
-	private static List<Particle> myParticles = null;
-	private static int N = 0;
-	private static int L = 0;
-	
-	public static List<Particle> createParticles(String pathStatic, String pathDinamic){
-		myParticles = new ArrayList<>();
 		
-		try {
-			inputFileStatic = new Scanner(new File(pathStatic));
-			inputFileDinamic = new Scanner(new File(pathDinamic));
-			N = inputFileStatic.nextInt();
-			L = inputFileStatic.nextInt();
-			
-			
-			/*
-			 * OJO por como se recorre... no se si esta bien!
-			 */
-			while( inputFileStatic.hasNextDouble() ){				
-				myParticles.add(new Particle(inputFileStatic.nextDouble(), inputFileStatic.nextDouble()));
+	
+		private static int N = 0;
+		private static double L = 0;
+		private static Input instance = null;
+		
+		public static Input getInstance(){
+			if (instance == null){
+				instance = new Input();
 			}
+			return instance;
+		}
+		
+		public void readParticles(String dFileName, String sFileName, Set<Particle> particles){
 			
-			double time = 0;
-			double posX,posY,vX,vY = 0;
+			File dFile = new File( dFileName );
+			FileReader dFr = null;
+			BufferedReader dBr = null;
+			String dLine= null;
+			String[] pos;
 			
-			while( inputFileDinamic.hasNext() ){
+			File sFile = new File( sFileName );
+			FileReader sFr = null;
+			BufferedReader sBr = null;
+			String sLine= null;
+			String[] attr;
+			
+			try{
+				dFr = new FileReader( dFile );
+				dBr = new BufferedReader( dFr );
+				dLine = dBr.readLine();
 				
-				int counter = 0;
-				int particleNumber = 0;
+				sFr = new FileReader(sFile);
+				sBr = new BufferedReader(sFr);
+				sLine = sBr.readLine();
+				N = Integer.parseInt(sLine);
+				sLine= sBr.readLine();
+				L = Double.parseDouble(sLine);
 				
-				time = inputFileDinamic.nextDouble();
-				
-				while(counter<N){
-					posX = inputFileDinamic.nextDouble();
-					// inputFileDinamic.next(); //tengo que hacer esto o nextDouble ya me lo mueve???
-					posY = inputFileDinamic.nextDouble();
-					vX = inputFileDinamic.nextDouble();
-					vY = inputFileDinamic.nextDouble();				
-					myParticles.get(counter).addMovement(time, new Position(posX, posY));
-					counter++;
+				while( (dLine=dBr.readLine())!=null && (sLine=dBr.readLine())!=null){
+					attr=sLine.split("\\s+");
+					pos=dLine.split("\\s+");
+					particles.add(new Particle(Double.parseDouble(attr[0]), Double.parseDouble(attr[1]), Double.parseDouble(pos[0]), Double.parseDouble(pos[1]), 0, 0));
 				}
 				
-				counter = 0;
-				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-						
-		} catch (FileNotFoundException e) {
-			System.out.println("OOPS, no existe el archivo");
-			e.printStackTrace();
 		}
-		return myParticles;
-		
-	}
-	
-	public static List<Particle> getMyParticles() {
-		return myParticles;
-	}
-	
-	public static int getL() {
-		return L;
-	}
-	
-	public static int getN() {
-		return N;
-	}
-
 }
