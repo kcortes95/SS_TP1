@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Particle {
+public class Particle implements Comparable<Particle>{
 	
 	/*
 	 * Creo que la particula no deberia saber 
@@ -77,6 +77,11 @@ public class Particle {
 	
 	public String toString(){
 		return "" + ID;
+	}
+
+	@Override
+	public int compareTo(Particle arg0) {
+		return this.ID-arg0.getID();
 	}
 	
 	

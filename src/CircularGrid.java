@@ -18,9 +18,9 @@ public class CircularGrid extends Grid{
 						getGrid()[i][j].addNeighbour(getGrid()[i-1][0]);
 					}
 				}else{
-					getGrid()[i][j].addNeighbour(getGrid()[getM()][j]);
+					getGrid()[i][j].addNeighbour(getGrid()[getM()-1][j]);
 					if(j+1<getM()){
-						getGrid()[i][j].addNeighbour(getGrid()[getM()][j+1]);
+						getGrid()[i][j].addNeighbour(getGrid()[getM()-1][j+1]);
 					// else es la diagonal y no va
 					}
 				}

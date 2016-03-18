@@ -24,8 +24,10 @@ public abstract class Grid {
 	
 	private void insertParticles(Set<Particle> particles){
 		for(Particle p: particles){
-			int x = (int) (Math.floor(p.getPosition().getX()/(L/M)) + 1);
-			int y = (int) (Math.floor(p.getPosition().getY()/(L/M)) + 1);
+			int x = (int) (Math.floor(p.getPosition().getX()/(L/M)));
+			int y = (int) (Math.floor(p.getPosition().getY()/(L/M)));
+			System.out.println("x: " + p.getPosition().getX() + " - y: " + p.getPosition().getY());
+			System.out.println("x: " + x + " - y: " + y);
 			cells[x][y].getParticles().add(p);
 		}
 	}

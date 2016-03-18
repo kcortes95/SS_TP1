@@ -1,7 +1,7 @@
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 
 public class Simulation {
@@ -10,7 +10,7 @@ public class Simulation {
 	private double Rc;
 	private double totalTime;
 	private double intervals;
-	private Map<Particle,Set<Particle>> condition = new HashMap<>();
+	private Map<Particle,Set<Particle>> condition = new TreeMap<>();
 	
 	/**
 	 * 
@@ -30,7 +30,7 @@ public class Simulation {
 	
 	private void run(){
 		double time = 0;
-		while(time<totalTime){
+		while(time<=totalTime){
 			time += intervals;
 			simulate();
 		}
@@ -61,6 +61,7 @@ public class Simulation {
 				}
 			}
 		}
+		System.out.println("escribe");
 		Output.getInstace().write(condition);
 	}
 	
