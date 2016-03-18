@@ -90,7 +90,7 @@ public class Filtering {
 	
 	private List<Integer> getNeighbouringCells(Integer currentCell){
 		List<Integer> vecinas = new ArrayList<Integer>();
-		if((currentCell-totCells)>=1 && (currentCell-totCells)<=25)
+		if((currentCell-totCells)>=1)
 			vecinas.add(currentCell-totCells);
 		
 		if((currentCell-totCells+1)>=1 && (currentCell-totCells+1)<=25)

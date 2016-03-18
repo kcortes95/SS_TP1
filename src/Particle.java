@@ -18,18 +18,26 @@ public class Particle {
 	
 	private static int counter = 1;
 	private int ID;
+	private Position pos;
 	private Movement movements = null;
 	private double radio;
 	private double color;
 	
-	public Particle(double radio, double color) {
-		this.movements = new Movement();
+	public Particle(double radio, double color, double x, double y, double velx, double vely) {
+		this.pos = new Position(x,y);
+		this.movements = new Movement(velx, vely);
+		movements.addMovement(0, x, y);
 		this.radio = radio;
 		this.color = color;
 		this.ID = counter++;
 	}
 	
-	public void addMovement(double tiempo, Position pos){
+	public Particle(double radio, double color, double x, double y){
+		this(radio,color,x,y,0,0);
+	}
+	
+	
+	public void addMovement(double tiempo){
 		movements.addMovement(tiempo, pos.getX(), pos.getY());
 	}
 	
@@ -39,6 +47,10 @@ public class Particle {
 	
 	public Position getPosition(double time){
 		return movements.getMovements().get(time);
+	}
+	
+	public Position getPosition(){
+		return pos;
 	}
 	
 	public double getRadio() {
