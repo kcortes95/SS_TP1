@@ -20,11 +20,20 @@ public class CircularGrid extends Grid{
 					if(j+1<getM()){
 						getGrid()[i][j].addNeighbour(getGrid()[getM()][j+1]);
 					// else es la diagonal y no va
+					}
 				}
 				if(j+1<getM()){
 					getGrid()[i][j].addNeighbour(getGrid()[i][j+1]);
-					if(i+1<getM())
+					if(i+1<getM()){
 						getGrid()[i][j].addNeighbour(getGrid()[i+1][j+1]);
+					}else{
+						getGrid()[i][j].addNeighbour(getGrid()[0][j+1]);
+					}
+				}else{
+					getGrid()[i][j].addNeighbour(getGrid()[i][0]);
+					if(i+1<getM())
+						getGrid()[i][j].addNeighbour(getGrid()[i+1][0]);
+					// else es la diagonal y no va
 				}
 			}
 		}

@@ -4,7 +4,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		/*
 		Particle p1 = new Particle(3.5, 5.7, 0, 2);
 		Particle p2 = new Particle(3.5, 5.5, 0, 2);
 		Particle p3 = new Particle(3.5, 7, 0, 2);
@@ -15,23 +14,17 @@ public class Main {
 		Particle p8 = new Particle(1.7, 5, 0, 2);
 		
 	
-		Set<Particle> myParticles = new HashSet<>();
+		CircularGrid grid = new CircularGrid(10,1);
 		
-		myParticles.add(p1);
-		myParticles.add(p2);
-		myParticles.add(p3);
-		myParticles.add(p4);
-		myParticles.add(p5);
-		myParticles.add(p6);
-		myParticles.add(p7);
-		myParticles.add(p8);
+		grid.insertParticle(p1);
+		grid.insertParticle(p2);
+		grid.insertParticle(p3);
+		grid.insertParticle(p4);
+		grid.insertParticle(p5);
+		grid.insertParticle(p6);
+		grid.insertParticle(p7);
+		grid.insertParticle(p8);
 		
-		Filtering f = new Filtering(8, 5, 2); // L M Rc
-		
-		f.sort(myParticles);
-		f.searchNeighbours();
-		
-		*/
 		
 	}
 	
