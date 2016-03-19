@@ -61,7 +61,6 @@ public class Simulation {
 				}
 			}
 		}
-		System.out.println("escribe");
 		Output.getInstace().write(condition);
 	}
 	

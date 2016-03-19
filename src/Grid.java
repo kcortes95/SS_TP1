@@ -26,8 +26,11 @@ public abstract class Grid {
 		for(Particle p: particles){
 			int x = (int) (Math.floor(p.getPosition().getX()/(L/M)));
 			int y = (int) (Math.floor(p.getPosition().getY()/(L/M)));
+			//Habilitar el codigo de abajo para ver las posiciones reales, y en la grilla de las particulas
+			/*
 			System.out.println("x: " + p.getPosition().getX() + " - y: " + p.getPosition().getY());
 			System.out.println("x: " + x + " - y: " + y);
+			*/
 			cells[x][y].getParticles().add(p);
 		}
 	}
