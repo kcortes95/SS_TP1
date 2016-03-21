@@ -8,11 +8,20 @@ public class Main {
 		System.out.println("Reading files...");
 		Input.readParticles("Dynamic100.txt", "Static100.txt", particles);
 		
+		System.out.println("Starting timer...");
+		long valStart = System.currentTimeMillis();
+		
 		System.out.println("Creating grid...");
 		Grid grid = new CircularGrid(Input.getL(),10,particles);
 		
 		System.out.println("Start simulation");
 		//aca habria que pedir los datos para empezar la simulacion
 		Simulation s = new Simulation(grid, 1, 1, 8);
+
+		long valEnd = System.currentTimeMillis();
+		System.out.println("Stop timer");
+		
+		System.out.println("TOTAL TIME IN MILISECONDS: " + (valEnd-valStart));
+		
 	}
 }
