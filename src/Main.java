@@ -12,6 +12,7 @@ public class Main {
 		long valStart = System.currentTimeMillis();
 		
 		System.out.println("Creating grid...");
+		//public CircularGrid(double L, int M, Set<Particle> particles)
 		Grid grid = new CircularGrid(Input.getL(),10,particles);
 		
 		System.out.println("Start simulation");
@@ -26,5 +27,30 @@ public class Main {
 		
 		System.out.println("TOTAL TIME IN MILISECONDS: " + (valEnd-valStart));
 		
+		
+		//timing(15,particles);
+		
 	}
+	
+
+	public static void timing(int totalRec, Set<Particle> particles){ //agregar Rc acá... y que despues lo llames en Simulation
+		
+		if(totalRec<=0){
+			throw new RuntimeException("OOPS... debe ser POSITIVO");
+		}
+		
+		for(int i=1;i<=totalRec;i++){
+			long valStart = System.currentTimeMillis();
+			
+			Grid grid = new CircularGrid(Input.getL(),i,particles);
+			//lo de simulation esta reeeee hardcodeado... habria que pasar algo por parametro, tipo Rc
+			Simulation s = new Simulation(grid, 1, 1, 8);
+			long valEnd = System.currentTimeMillis();
+			System.out.println("TOTAL TIME IN MILISECONDS IN " + i + " : " + (valEnd-valStart));
+
+		}
+		
+	}
+	
+	
 }
