@@ -16,6 +16,9 @@ public class Main {
 		
 		System.out.println("Start simulation");
 		//aca habria que pedir los datos para empezar la simulacion
+		//public Simulation(Grid grid, double totalTime, double intervals, double Rc)
+		//Lo de totalTime es el tiempo inicial, no?? KUYUM HEEEEEELP!
+		
 		Simulation s = new Simulation(grid, 1, 1, 8);
 
 		long valEnd = System.currentTimeMillis();
