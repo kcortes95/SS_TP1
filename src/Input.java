@@ -26,10 +26,12 @@ public class Input {
 					//Aca voy creando la particula!! :) 
 					particles.add(new Particle(Double.parseDouble(sRead.next()) , Double.parseDouble(sRead.next()), Double.parseDouble(dRead.next()), Double.parseDouble(dRead.next())));
 				}
+				dRead.close();
+				sRead.close();
 				
 			} catch (Exception e) {
 				System.out.println("Error scanning file");
-			}			
+			}
 			
 		} catch (Exception e) {
 			System.out.println("Error opening or finding file");

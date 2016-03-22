@@ -25,10 +25,9 @@ public class Simulation {
 		this.totalTime = totalTime;
 		this.intervals = intervals;
 		this.Rc = Rc;
-		run();
 	}
 	
-	private void run(){
+	public void run(){
 		double time = 0;
 		while(time<=totalTime){
 			time += intervals;
