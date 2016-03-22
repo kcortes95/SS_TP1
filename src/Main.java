@@ -5,12 +5,14 @@ public class Main {
 	public static void main(String[] args) {
 		Set<Particle> particles = new HashSet<Particle>();
 		
+		int L = 20;
+		
 		//public static void generateRandomParticles(Set<Particle> particles, int N, double L)
-		generateRandomParticles(particles, 50, 20);
+		generateRandomParticles(particles, 2000, L);
 
 		//timing(int totalRec, Set<Particle> particles, Double Rc, int L)
-	
-		timing(19,particles,1.0,20);
+		timing(19,particles,1.0,L);
+		
 	}
 	
 
@@ -45,8 +47,9 @@ public class Main {
 		
 		System.out.println("Generating " + N + " random particles, with L: " + L);
 		
+		//En este caso se nos pide que el R de las particulas sea 0.25
 		for(int i=0; i<N; i++){
-			particles.add(new Particle(Math.random(),1,Math.random()*L,Math.random()*L));
+			particles.add(new Particle(0.25,1,Math.random()*L,Math.random()*L));
 		}
 	}
 	
