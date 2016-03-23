@@ -8,7 +8,7 @@ public class Main {
 		int L = 20;
 		
 		//public static void generateRandomParticles(Set<Particle> particles, int N, double L)
-		generateRandomParticles(particles, 2000, L);
+		generateRandomParticles(particles, 4500, L);
 
 		//timing(int totalRec, Set<Particle> particles, Double Rc, int L)
 		timing(19,particles,1.0,L);
