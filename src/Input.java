@@ -4,6 +4,7 @@ import java.util.Set;
 
 public class Input {
 	
+	private static double Rmax = 0;
 	private static int N = 0;
 	private static int L = 0;
 	private static double actualTime = 0;
@@ -16,6 +17,7 @@ public class Input {
 			File sFile = new File(sPath);
 			
 			try {
+				double r;
 				Scanner dRead = new Scanner(dFile);
 				Scanner sRead = new Scanner(sFile);
 				actualTime = Double.parseDouble(dRead.next());
@@ -24,7 +26,9 @@ public class Input {
 			
 				while(dRead.hasNext() && sRead.hasNext()){
 					//Aca voy creando la particula!! :) 
-					particles.add(new Particle(Double.parseDouble(sRead.next()) , Double.parseDouble(sRead.next()), Double.parseDouble(dRead.next()), Double.parseDouble(dRead.next())));
+					particles.add(new Particle((r=Double.parseDouble(sRead.next())) , Double.parseDouble(sRead.next()), Double.parseDouble(dRead.next()), Double.parseDouble(dRead.next())));
+					if(r>Rmax)
+						Rmax = r;
 				}
 				dRead.close();
 				sRead.close();
@@ -49,6 +53,10 @@ public class Input {
 	
 	public static int getN() {
 		return N;
+	}
+	
+	public static double getRmax() {
+		return Rmax;
 	}
 
 

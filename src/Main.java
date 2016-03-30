@@ -11,14 +11,14 @@ public class Main {
 		
 		//Esto es implementando los imputs que nos brinda la catedra
 		System.out.println("Reading files...");
-		Input.readParticles("Dynamic100.txt", "Static100.txt", particles);
+		Input.readParticles("Dynamic500.txt", "Static500.txt", particles);
 
 		System.out.println("Starting timer...");
 		long valStart = System.currentTimeMillis();
 
 		System.out.println("Creating grid...");
 		//public LinearGrid(double L, int M, Set<Particle> particles)
-		Grid grid = new LinearGrid(Input.getL(),Rc,particles);
+		Grid grid = new LinearGrid(Input.getL(),(int)(Input.getL()/(Rc+2*Input.getRmax())),particles);
 		
 		System.out.println("Start simulation");
 		//public Simulation(Grid grid, double totalTime, double intervals, double Rc)
@@ -30,15 +30,6 @@ public class Main {
 		System.out.println("Stop timer");
 		
 		System.out.println("TOTAL TIME IN MILISECONDS: " + (valEnd-valStart));
-		/*Set<Particle> particles = new HashSet<Particle>();
-		
-		int L = 20;
-		
-		//public static void generateRandomParticles(Set<Particle> particles, int N, double L)
-		generateRandomParticles(particles, 150, L);
-
-		//timing(int totalRec, Set<Particle> particles, Double Rc, int L)
-		timing(20,particles,1.0,L);*/
 		
 	}
 	

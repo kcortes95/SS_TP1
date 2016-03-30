@@ -60,6 +60,7 @@ public class Simulation {
 				}
 			}
 		}
+		System.out.println("Writes output");
 		Output.getInstace().write(condition);
 	}
 	
@@ -70,6 +71,13 @@ public class Simulation {
 	}
 	
 	private double getDistance(Particle p1, Particle p2){
+		/*// Wraps by X axis
+		if(p1.getPosition().getX()-p2.getPosition().getX()<grid.getM())
+			return Math.sqrt(Math.pow(p1.getPosition().getX()-(p2.getPosition().getX()-grid.getL()), 2) + Math.pow(p1.getPosition().getY()-p2.getPosition().getY(), 2))-p1.getRadio()-p2.getRadio();
+		// Wraps by Y axis
+		if(p1.getPosition().getY()-p2.getPosition().getY()<grid.getM())
+			return Math.sqrt(Math.pow(p1.getPosition().getX()-(p2.getPosition().getX()), 2) + Math.pow(p1.getPosition().getY()-(p2.getPosition().getY()-grid.getL()), 2))-p1.getRadio()-p2.getRadio();
+		// Doesn't wrap*/
 		return Math.sqrt(Math.pow(p1.getPosition().getX()-p2.getPosition().getX(), 2) + Math.pow(p1.getPosition().getY()-p2.getPosition().getY(), 2))-p1.getRadio()-p2.getRadio();
 	}
 }
